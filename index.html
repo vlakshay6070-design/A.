@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Valentine 💖</title>
+
   <style>
     body {
       background: #f9c5d1;
@@ -28,56 +29,45 @@
     }
 
     button {
-      padding: 12px 22px;
-      border: none;
-      border-radius: 25px;
+      padding: 10px 20px;
       font-size: 16px;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      margin: 10px;
+      position: absolute;
     }
 
     #yes {
       background: #ff4d6d;
       color: white;
+      left: 80px;
+      bottom: 30px;
     }
 
     #no {
       background: #ccc;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    #yay {
-      display: none;
-      font-size: 24px;
+      color: black;
+      right: 80px;
+      bottom: 30px;
     }
   </style>
 </head>
-<body>
 
-  <div class="card" id="card">
-    <h2>✨ aaria, will you be my valentine? ✨</h2>
+<body>
+  <div class="card">
+    <h2>Aaria, will you be my Valentine? 💕</h2>
 
     <button id="yes" onclick="yesClicked()">Yes 💖</button>
-    <button id="no" onclick="moveNo()" ontouchstart="moveNo()">No 😶</button>
-
-    <p style="font-size:12px;margin-top:15px;">“No” seems shy today 😈</p>
-  </div>
-
-  <div class="card" id="yay">
-    <h2>YAY!!! 🎉💘</h2>
-    <p>aaria said YES 😌</p>
-    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="200">
+    <button id="no" onmouseover="moveNo()">No 😭</button>
   </div>
 
   <script>
     function moveNo() {
       const noBtn = document.getElementById("no");
-      const card = document.getElementById("card");
+      const card = document.querySelector(".card");
 
-      const maxX = card.offsetWidth - noBtn.offsetWidth;
-      const maxY = card.offsetHeight - noBtn.offsetHeight;
+      const maxX = card.clientWidth - noBtn.clientWidth;
+      const maxY = card.clientHeight - noBtn.clientHeight;
 
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
@@ -87,10 +77,12 @@
     }
 
     function yesClicked() {
-      document.getElementById("card").style.display = "none";
-      document.getElementById("yay").style.display = "block";
+      document.body.innerHTML = `
+        <h1 style="color:#ff4d6d; font-family:Arial;">
+          Yayyy 😭💖 Aaria said YES!
+        </h1>
+      `;
     }
   </script>
-
 </body>
 </html>
