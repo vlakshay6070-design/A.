@@ -1,77 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine 💖</title>
-  <style>
-    body {
-      background: #f9c5d1;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-      width: 320px;
-      position: relative;
-    }
+<style>
+  body {
+    background: #f9c5d1;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
 
-    h2 {
-      margin-bottom: 20px;
-    }
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 320px;
+    position: relative;
+  }
 
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
+  h2 { margin-bottom: 25px; }
 
-    #yes {
-      background: #ff4d6d;
-      color: white;
-    }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+  }
 
-    #no {
-      background: #ccc;
-      position: absolute;
-    }
-  </style>
+  #yes {
+    background: #ff4d6d;
+    color: white;
+    left: 60px;
+    bottom: 25px;
+  }
+
+  #no {
+    background: #ccc;
+    right: 60px;
+    bottom: 25px;
+  }
+</style>
 </head>
-<body>
 
+<body>
   <div class="card">
     <h2>Aaria, will you be my Valentine? 💕</h2>
-    <button id="yes" onclick="yesClicked()">Yes 😍</button>
-    <button id="no">No 🙃</button>
+    <button id="yes" onclick="yesClicked()">Yes 💖</button>
+    <button id="no">No 😶</button>
   </div>
 
-  <script>
-    const noBtn = document.getElementById("no");
+<script>
+  const noBtn = document.getElementById("no");
+  const card = document.querySelector(".card");
 
-    noBtn.addEventListener("mouseover", moveButton);
-    noBtn.addEventListener("click", moveButton);
+  function moveNo() {
+    const maxX = card.clientWidth - noBtn.clientWidth;
+    const maxY = card.clientHeight - noBtn.clientHeight;
 
-    function moveButton() {
-      const x = Math.random() * 200;
-      const y = Math.random() * 200;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
 
-    function yesClicked() {
-      document.body.innerHTML = "<h1>YAYYY 💖🥰</h1>";
-    }
-  </script>
+  // UNIVERSAL EVENTS
+  noBtn.addEventListener("pointerenter", moveNo); // laptop
+  noBtn.addEventListener("pointerdown", moveNo);  // phone
+  noBtn.addEventListener("click", moveNo);        // fallback
+
+  function yesClicked() {
+    document.body.innerHTML =
+      "<h1 style='color:#ff4d6d;font-family:Arial;'>YAY 💖🥰</h1>";
+  }
+</script>
 
 </body>
 </html>
