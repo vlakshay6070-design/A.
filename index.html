@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <style>
+    body {
+      background: #f9c5d1;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 340px;
+      position: relative;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ccc;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #yay {
+      display: none;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <h2>✨ aaria, will you be my valentine? ✨</h2>
+
+    <button id="yes" onclick="yesClicked()">Yes 💖</button>
+    <button id="no" onclick="moveNo()" ontouchstart="moveNo()">No 😶</button>
+
+    <p style="font-size:12px;margin-top:15px;">“No” seems shy today 😈</p>
+  </div>
+
+  <div class="card" id="yay">
+    <h2>YAY!!! 🎉💘</h2>
+    <p>aaria said YES 😌</p>
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="200">
+  </div>
+
+  <script>
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      const card = document.getElementById("card");
+
+      const maxX = card.offsetWidth - noBtn.offsetWidth;
+      const maxY = card.offsetHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function yesClicked() {
+      document.getElementById("card").style.display = "none";
+      document.getElementById("yay").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
